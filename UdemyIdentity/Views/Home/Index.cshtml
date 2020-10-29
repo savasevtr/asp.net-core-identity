@@ -1,0 +1,39 @@
+﻿@model UserSignInViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <form class="w-50 mx-auto p-4 mt-5 shadow" asp-action="SignIn" method="post">
+        <h4 class="text-center lead">Giriş Yap</h4>
+
+        <div class="form-group">
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <input type="submit" class="btn btn-primary btn-sm" value="Giriş Yap" />
+        <br />
+        <small class="py-1">
+            Hesabınız yok mu? <a asp-action="Register">Kayıt Ol</a>
+        </small>
+    </form>
+
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

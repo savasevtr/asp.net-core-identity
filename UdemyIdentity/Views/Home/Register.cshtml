@@ -1,0 +1,61 @@
+﻿@model UserSignUpViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <form class="w-50 mx-auto p-4 mt-5 shadow" asp-action="Register" method="post">
+        <h4 class="text-center lead">Kayıt Ol</h4>
+
+        <div class="form-group">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" class="form-control form-control-sm" />
+            <span class="text-danger" asp-validation-for="FirstName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control form-control-sm" />
+            <span class="text-danger" asp-validation-for="LastName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control form-control-sm" />
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" class="form-control form-control-sm" />
+            <span class="text-danger" asp-validation-for="UserName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="form-control form-control-sm" />
+            <span class="text-danger" asp-validation-for="Password"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword"></label>
+            <input asp-for="ConfirmPassword" class="form-control form-control-sm" />
+            <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+        </div>
+
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+        <input type="submit" class="btn btn-primary btn-sm" value="Kayıt Ol" />
+        <br />
+        <small class="py-1">
+            Hesabınız var mı? <a asp-action="Register">Giriş Yap</a>
+        </small>
+    </form>
+
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
