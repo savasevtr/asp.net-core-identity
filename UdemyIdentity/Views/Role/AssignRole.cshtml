@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            <form asp-action="RoleAssign" asp-controller="Role" method="post" class="shadow w-75 p-3">
+            <form asp-action="AssignRole" asp-controller="Role" method="post" class="shadow w-75 p-3">
 
 
                 @for (int i = 0; i < Model.Count; i++)
@@ -19,7 +19,9 @@
 
                         <input type="hidden" asp-for="@Model[i].RoleId" />
 
-                        <input type="checkbox" class="form-check-input" name="@Model[i].Name" value="@Model[i].Exists" />
+                        <input type="hidden" asp-for="@Model[i].Name" />
+
+                        <input type="checkbox" class="form-check-input" asp-for="@Model[i].Exists" />
 
                         <label class="form-check-label" for="@Model[i].Name">
                             @Model[i].Name
