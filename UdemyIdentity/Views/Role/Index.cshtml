@@ -1,0 +1,43 @@
+﻿@model List<AppRole>
+@{
+    ViewData["Title"] = "Roller";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Roller</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-striped table-sm table-responsive-sm">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Rol Adı</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count > 0)
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr class="text-danger">
+                            <td colspan="3">Kayıtlı rol bulunmamaktadır</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
