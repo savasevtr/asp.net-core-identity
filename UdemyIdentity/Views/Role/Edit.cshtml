@@ -1,17 +1,19 @@
-﻿@model RoleViewModel
+﻿@model RoleEditViewModel
 @{
-    ViewData["Title"] = "Yeni Rol Ekle";
+    ViewData["Title"] = "Rol Düzenle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h4>Yeni Rol Ekle</h4>
+<h4>Rol Düzenle</h4>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <a asp-action="Index" asp-controller="Role" class="btn btn-info btn-sm my-2">Roller</a>
 
-            <form asp-action="Create" asp-controller="Role" method="post" class="w-50 shadow p-3">
+            <form asp-action="Edit" asp-controller="Role" method="post" class="w-50 shadow p-3">
+
+                <input type="hidden" asp-for="Id" />
 
                 <div class="form-group">
                     <label asp-for="Name"></label>
@@ -21,10 +23,11 @@
 
                 <div class="text-danger" asp-validation-summary="ModelOnly"></div>
 
-                <button type="submit" class="btn btn-success btn-sm">Kaydet</button>
+                <button type="submit" class="btn btn-success btn-sm">Güncelle</button>
 
             </form>
 
         </div>
     </div>
 </div>
+

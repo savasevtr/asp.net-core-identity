@@ -55,5 +55,44 @@ namespace UdemyIdentity.Controllers
 
             return View(model);
         }
+
+        public IActionResult Edit(int id)
+        {
+            var role = _roleManager.Roles.FirstOrDefault(x => x.Id == id);
+
+            RoleEditViewModel model = new RoleEditViewModel
+            {
+                Id = role.Id,
+                Name = role.Name
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(RoleEditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var role = _roleManager.Roles.Where(x => x.Id == model.Id).FirstOrDefault();
+                role.Name = model.Name;
+
+                var identityResult = await _roleManager.UpdateAsync(role);
+
+                if (identityResult.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                foreach (var item in identityResult.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+            }
+
+            return View(model);
+        }
+
+
     }
 }
