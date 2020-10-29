@@ -26,6 +26,16 @@ namespace UdemyIdentity
                 opt.Password.RequireNonAlphanumeric = false;
                 opt.Password.RequireUppercase = false;
             }).AddEntityFrameworkStores<UdemyContext>();
+
+            services.ConfigureApplicationCookie(opt =>
+            {
+                opt.Cookie.HttpOnly = true;
+                opt.Cookie.Name = "UdemyCookie";
+                opt.Cookie.SameSite = SameSiteMode.Strict;
+                opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                opt.ExpireTimeSpan = TimeSpan.FromDays(20);
+            });
+
             services.AddControllersWithViews();
         }
 
