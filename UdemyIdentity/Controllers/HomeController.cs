@@ -30,15 +30,28 @@ namespace UdemyIdentity.Controllers
         {
             if (ModelState.IsValid)
             {
-                var identityResult = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
+                var identityResult = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, true);
                 // identityResult.IsNotAllowed // iki aşamalı doğrulamada kullanılıyor
+
+                if (identityResult.IsLockedOut)
+                {
+                    var lockoutEndDate = await _userManager.GetLockoutEndDateAsync(await _userManager.FindByNameAsync(model.UserName));
+
+                    var remainingTime = lockoutEndDate.Value.Minute - DateTime.Now.Minute;
+
+                    ModelState.AddModelError("", $"3 kez yanlış girdiğiniz için hesabınız kitlenmiştir! Hesabınız { remainingTime } dakika kilitlenmiştir!");
+
+                    return View("Index", model);
+                }
 
                 if (identityResult.Succeeded)
                 {
                     return RedirectToAction("Index", "Panel");
                 }
 
-                ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı");
+                var accessFailedCount = await _userManager.GetAccessFailedCountAsync(await _userManager.FindByNameAsync(model.UserName));
+
+                ModelState.AddModelError("", $"Kullanıcı adı veya şifre hatalı! { 3 - accessFailedCount } hakkınız kaldı");
             }
 
             return View("Index", model);

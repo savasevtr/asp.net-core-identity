@@ -18,6 +18,7 @@ namespace UdemyIdentity
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<UdemyContext>();
+
             services.AddIdentity<AppUser, AppRole>(opt =>
             {
                 opt.Password.RequireDigit = false;
@@ -25,6 +26,8 @@ namespace UdemyIdentity
                 opt.Password.RequiredLength = 1;
                 opt.Password.RequireNonAlphanumeric = false;
                 opt.Password.RequireUppercase = false;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10); // verilen süre kadar hesap kilitlenir (10 dk)
+                opt.Lockout.MaxFailedAccessAttempts = 3; // kullanýcý bilgileri 3 kez yanlýþ girilince kilitlenir
             }).AddEntityFrameworkStores<UdemyContext>();
 
             services.ConfigureApplicationCookie(opt =>
