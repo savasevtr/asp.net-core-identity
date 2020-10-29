@@ -30,7 +30,7 @@ namespace UdemyIdentity.Controllers
         {
             if (ModelState.IsValid)
             {
-                var identityResult = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
+                var identityResult = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
                 // identityResult.IsNotAllowed // iki aşamalı doğrulamada kullanılıyor
 
                 if (identityResult.Succeeded)
