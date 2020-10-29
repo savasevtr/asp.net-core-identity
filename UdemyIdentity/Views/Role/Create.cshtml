@@ -1,0 +1,31 @@
+﻿@model RoleViewModel
+@{
+    ViewData["Title"] = "Yeni Rol Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Yeni Rol Ekle</h4>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <a asp-action="Index" asp-controller="Role" class="btn btn-info btn-sm my-2">Roller</a>
+
+            <form asp-action="Create" asp-controller="Role" method="post" class="w-50 shadow p-3">
+
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                <button type="submit" class="btn btn-success btn-sm">Kaydet</button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+

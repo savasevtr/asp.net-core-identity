@@ -153,3 +153,4 @@ C:\Users\SE\source\repos\UdemyIdentity\UdemyIdentity\obj\Debug\netcoreapp3.1\Raz
 C:\Users\SE\source\repos\UdemyIdentity\UdemyIdentity\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Index.cshtml.g.cs
 C:\Users\SE\source\repos\UdemyIdentity\UdemyIdentity\obj\Debug\netcoreapp3.1\Razor\Views\Panel\UpdateUser.cshtml.g.cs
 C:\Users\SE\source\repos\UdemyIdentity\UdemyIdentity\obj\Debug\netcoreapp3.1\Razor\Views\Role\Index.cshtml.g.cs
+C:\Users\SE\source\repos\UdemyIdentity\UdemyIdentity\obj\Debug\netcoreapp3.1\Razor\Views\Role\Create.cshtml.g.cs

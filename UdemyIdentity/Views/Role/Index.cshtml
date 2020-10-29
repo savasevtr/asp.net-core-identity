@@ -4,17 +4,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Roller</h1>
+<h4>Roller</h4>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
+
+            <a asp-action="Create" asp-controller="Role" class="btn btn-info btn-sm my-2">Yeni Rol Ekle</a>
+
             <table class="table table-bordered table-striped table-sm table-responsive-sm">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th class="text-center" style="width: 10%">ID</th>
                         <th>Rol Adı</th>
-                        <th>İşlem</th>
+                        <th class="text-center">İşlem</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,7 +26,7 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.Id</td>
+                                <td class="text-center">@item.Id</td>
                                 <td>@item.Name</td>
                                 <td></td>
                             </tr>
@@ -35,7 +38,6 @@
                             <td colspan="3">Kayıtlı rol bulunmamaktadır</td>
                         </tr>
                     }
-
                 </tbody>
             </table>
         </div>
