@@ -31,6 +31,7 @@ namespace UdemyIdentity
                     opt.Password.RequireUppercase = false;
                     opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10); // verilen süre kadar hesap kilitlenir (10 dk)
                     opt.Lockout.MaxFailedAccessAttempts = 3; // kullanýcý bilgileri 3 kez yanlýþ girilince kilitlenir
+                    opt.SignIn.RequireConfirmedEmail = true; // doðrulanmýþ email þartý
                 }
             ).AddErrorDescriber<CustomIdentityValidator>()
             .AddPasswordValidator<CustomPasswordValidator>()

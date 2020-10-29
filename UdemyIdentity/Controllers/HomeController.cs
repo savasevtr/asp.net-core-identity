@@ -31,7 +31,6 @@ namespace UdemyIdentity.Controllers
             if (ModelState.IsValid)
             {
                 var identityResult = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, true);
-                // identityResult.IsNotAllowed // iki aşamalı doğrulamada kullanılıyor
 
                 if (identityResult.IsLockedOut)
                 {
@@ -39,6 +38,13 @@ namespace UdemyIdentity.Controllers
                     var remainingTimeForMinute = lockoutEndDate.Value.Minute - DateTime.Now.Minute;
                     
                     ModelState.AddModelError("", $"3 kez yanlış girdiğiniz için hesabınız { remainingTimeForMinute } dakika kilitlenmiştir!");
+
+                    return View("Index", model);
+                }
+
+                if (identityResult.IsNotAllowed)
+                {
+                    ModelState.AddModelError("", "Email adresinizi lütfen doğrulayınız!");
 
                     return View("Index", model);
                 }
