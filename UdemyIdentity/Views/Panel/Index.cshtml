@@ -4,23 +4,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h4>Profil Bilgilerim</h4>
 
-<table class="table table-hover">
-    <tr>
-        <th>Kullanıcı Adı</th>
-        <td>@Model.FirstName</td>
-    </tr>
-    <tr>
-        <th>Kullanıcı Soyadı</th>
-        <td>@Model.LastName</td>
-    </tr>
-    <tr>
-        <th>Email</th>
-        <td>@Model.Email</td>
-    </tr>
-    <tr>
-        <th>Telefon</th>
-        <td>@Model.PhoneNumber</td>
-    </tr>
-</table>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-9">
+            <table class="table table-hover">
+                <tr>
+                    <th>Kullanıcı Adı</th>
+                    <td>@Model.FirstName</td>
+                </tr>
+                <tr>
+                    <th>Kullanıcı Soyadı</th>
+                    <td>@Model.LastName</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <th>Telefon</th>
+                    <td>@Model.PhoneNumber</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3">
+            <img src="~/img/@Model.PictureUrl" alt="@(Model.FirstName + " " + Model.LastName)" class="img-fluid img-thumbnail" />
+        </div>
+    </div>
+</div>

@@ -28,7 +28,7 @@ namespace UdemyIdentity.Models
         [Display(Name = "Profil Fotoğrafı:")]
         public string PictureUrl { get; set; }
 
-        
+        [Display(Name = "Profil Fotoğrafı:")]
         public IFormFile PictureFile { get; set; }
     }
 }

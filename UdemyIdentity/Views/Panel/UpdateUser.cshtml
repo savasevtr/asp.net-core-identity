@@ -1,8 +1,55 @@
-﻿
+﻿@model UserUpdateViewModel
 @{
     ViewData["Title"] = "Bilgilerimi Güncelle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Bilgilerimi Güncelle</h1>
+<h4>Bilgilerimi Güncelle</h4>
 
+<div class="container-fluid">
+    <form asp-action="UpdateUser" asp-controller="Panel" method="post" class="w-100 shadow p-3" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" class="form-control" />
+            <span class="text-danger" asp-validation-for="FirstName"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control" />
+            <span class="text-danger" asp-validation-for="LastName"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label asp-for="PictureFile"></label>
+                    <input asp-for="PictureFile" class="form-control" />
+                    <span class="text-danger" asp-validation-for="PictureFile"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="PictureUrl"></label>
+                <br />
+                <img src="~/img/@Model.PictureUrl" alt="@Model.PictureUrl" class="img-thumbnail" />
+            </div>
+        </div>
+
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+        <input type="submit" class="btn btn-outline-success btn-sm" value="Güncelle" />
+    </form>
+</div>
