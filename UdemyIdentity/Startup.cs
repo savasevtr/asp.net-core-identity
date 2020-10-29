@@ -38,6 +38,7 @@ namespace UdemyIdentity
 
             services.ConfigureApplicationCookie(opt =>
             {
+                opt.LoginPath = new PathString("/Home/Index");
                 opt.Cookie.HttpOnly = true;
                 opt.Cookie.Name = "UdemyCookie";
                 opt.Cookie.SameSite = SameSiteMode.Strict;
@@ -57,8 +58,9 @@ namespace UdemyIdentity
             }
 
             app.UseRouting();
-
             app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
