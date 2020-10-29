@@ -149,3 +149,5 @@ C:\Users\SE\source\repos\UdemyIdentity\UdemyIdentity\obj\Debug\netcoreapp3.1\Ude
 C:\Users\SE\source\repos\UdemyIdentity\UdemyIdentity\obj\Debug\netcoreapp3.1\UdemyIdentity.Views.pdb
 C:\Users\SE\source\repos\UdemyIdentity\UdemyIdentity\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\SE\source\repos\UdemyIdentity\UdemyIdentity\obj\Debug\netcoreapp3.1\Razor\Views\Home\Register.cshtml.g.cs
+C:\Users\SE\source\repos\UdemyIdentity\UdemyIdentity\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\SE\source\repos\UdemyIdentity\UdemyIdentity\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Index.cshtml.g.cs
