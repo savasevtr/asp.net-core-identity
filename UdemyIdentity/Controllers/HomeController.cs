@@ -37,9 +37,17 @@ namespace UdemyIdentity.Controllers
                 {
                     var lockoutEndDate = await _userManager.GetLockoutEndDateAsync(await _userManager.FindByNameAsync(model.UserName));
 
-                    var remainingTime = lockoutEndDate.Value.Minute - DateTime.Now.Minute;
+                    var remainingTimeForMinute = lockoutEndDate.Value.Minute - DateTime.Now.Minute;
+                    var remainingTimeSecond = lockoutEndDate.Value.Second - DateTime.Now.Second;
 
-                    ModelState.AddModelError("", $"3 kez yanlış girdiğiniz için hesabınız kitlenmiştir! Hesabınız { remainingTime } dakika kilitlenmiştir!");
+                    if (remainingTimeForMinute != 0)
+                    {
+                        ModelState.AddModelError("", $"3 kez yanlış girdiğiniz için hesabınız { remainingTimeForMinute } dakika kilitlenmiştir!");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", $"3 kez yanlış girdiğiniz için hesabınız { remainingTimeSecond } saniye kilitlenmiştir!");
+                    }
 
                     return View("Index", model);
                 }
