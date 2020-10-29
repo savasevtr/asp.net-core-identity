@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using UdemyIdentity.Context;
+using UdemyIdentity.Validators;
 
 namespace UdemyIdentity
 {
@@ -21,14 +22,14 @@ namespace UdemyIdentity
 
             services.AddIdentity<AppUser, AppRole>(opt =>
             {
-                opt.Password.RequireDigit = false;
-                opt.Password.RequireLowercase = false;
-                opt.Password.RequiredLength = 1;
-                opt.Password.RequireNonAlphanumeric = false;
-                opt.Password.RequireUppercase = false;
-                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10); // verilen süre kadar hesap kilitlenir (10 dk)
-                opt.Lockout.MaxFailedAccessAttempts = 3; // kullanýcý bilgileri 3 kez yanlýþ girilince kilitlenir
-            }).AddEntityFrameworkStores<UdemyContext>();
+                //opt.Password.RequireDigit = false;
+                //opt.Password.RequireLowercase = false;
+                //opt.Password.RequiredLength = 1;
+                //opt.Password.RequireNonAlphanumeric = false;
+                //opt.Password.RequireUppercase = false;
+                //opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10); // verilen süre kadar hesap kilitlenir (10 dk)
+                //opt.Lockout.MaxFailedAccessAttempts = 3; // kullanýcý bilgileri 3 kez yanlýþ girilince kilitlenir
+            }).AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<UdemyContext>();
 
             services.ConfigureApplicationCookie(opt =>
             {
