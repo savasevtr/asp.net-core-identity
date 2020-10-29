@@ -93,6 +93,20 @@ namespace UdemyIdentity.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> Delete(int id)
+        {
+            var role = _roleManager.Roles.FirstOrDefault(x => x.Id == id);
 
+            var identityResult = await _roleManager.DeleteAsync(role);
+
+            if (identityResult.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+
+            TempData["Errors"] = identityResult.Errors;
+
+            return RedirectToAction("Index");
+        }
     }
 }
