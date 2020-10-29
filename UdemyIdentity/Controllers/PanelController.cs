@@ -25,6 +25,15 @@ namespace UdemyIdentity.Controllers
             return View(user);
         }
 
+        public async Task<IActionResult> UpdateUser()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+
+
+            return View(user);
+        }
+
         [AllowAnonymous] // herkese açık
         public IActionResult Index2()
         {

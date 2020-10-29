@@ -10,8 +10,8 @@ using UdemyIdentity.Context;
 namespace UdemyIdentity.Migrations
 {
     [DbContext(typeof(UdemyContext))]
-    [Migration("20201028202118_ColumnAddedInUser")]
-    partial class ColumnAddedInUser
+    [Migration("20201029161624_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -172,7 +172,13 @@ namespace UdemyIdentity.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -198,7 +204,7 @@ namespace UdemyIdentity.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Picture")
+                    b.Property<string>("PictureUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
