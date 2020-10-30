@@ -7,6 +7,7 @@ using UdemyIdentity.Models;
 
 namespace UdemyIdentity.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class HomeController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -24,6 +25,7 @@ namespace UdemyIdentity.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignIn(UserSignInViewModel model)
         {
             if (ModelState.IsValid)
@@ -92,6 +94,11 @@ namespace UdemyIdentity.Controllers
                 }
             }
 
+            return View();
+        }
+
+        public IActionResult AccessDenied()
+        {
             return View();
         }
     }

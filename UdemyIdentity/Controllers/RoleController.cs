@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -161,6 +162,19 @@ namespace UdemyIdentity.Controllers
             }
 
             return RedirectToAction("UserList");
+        }
+
+        public async Task<IActionResult> AddClaim(int id)
+        {
+            var user = _userManager.Users.FirstOrDefault(x => x.Id == id);
+
+            if ((await _userManager.GetClaimsAsync(user)).Count == 0)
+            {
+                Claim claim = new Claim("gender", "female");
+                await _userManager.AddClaimAsync(user, claim);
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -40,11 +37,20 @@ namespace UdemyIdentity
             services.ConfigureApplicationCookie(opt =>
             {
                 opt.LoginPath = new PathString("/Home/Index");
+                opt.AccessDeniedPath = new PathString("/Home/AccessDenied");
                 opt.Cookie.HttpOnly = true;
                 opt.Cookie.Name = "UdemyCookie";
                 opt.Cookie.SameSite = SameSiteMode.Strict;
                 opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                 opt.ExpireTimeSpan = TimeSpan.FromDays(20);
+            });
+
+            services.AddAuthorization(opt =>
+            {
+                opt.AddPolicy("FemalePolicy", cnf =>
+                {
+                    cnf.RequireClaim("gender", "female");
+                });
             });
 
             services.AddControllersWithViews();
